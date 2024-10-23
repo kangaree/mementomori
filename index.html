@@ -7,18 +7,62 @@
     <style>
       body {
         font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
         text-align: center;
         margin: 50px;
       }
+      h1 {
+        color: #5a5a5a;
+      }
+      .controls {
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      button,
+      input[type="date"] {
+        padding: 10px 20px;
+        margin: 0 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      input[type="date"] {
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
       .result {
         font-size: 24px;
-        color: #333;
-        margin: 20px 0;
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        max-width: 400px;
       }
     </style>
   </head>
   <body>
     <h1>Memento Mori</h1>
+
+    <div class="controls">
+      <button id="prev">Previous Day</button>
+      <input type="date" id="datePicker" />
+      <button id="next">Next Day</button>
+    </div>
+
     <div class="result" id="result"></div>
 
     <script>
@@ -1346,7 +1390,7 @@
         {
           name: "Yokozuna",
           birthday: "1966-10-02",
-          deathday: "200-10-23",
+          deathday: "2000-10-23",
         },
         {
           name: "Jackie Robinson",
@@ -1635,10 +1679,11 @@
         },
       ];
 
-      function findAndDisplayPerson() {
-        const today = new Date();
-        const month = today.getMonth() + 1;
-        const day = today.getDate();
+      let selectedDate = new Date();
+
+      function updateDisplay() {
+        const month = selectedDate.getMonth() + 1; // getMonth() returns 0-11
+        const day = selectedDate.getDate();
         const currentDate = `${month}-${day}`;
 
         for (const person of people) {
@@ -1655,13 +1700,42 @@
             const ageAtDeath = deathYear - birthYear;
 
             const resultDiv = document.getElementById("result");
-            resultDiv.innerHTML = `RIP ${person.name}<br>Died in ${deathYear} on ${deathMonth}-${deathDay}.<br>Aged ${ageAtDeath}.`;
-            break;
+            resultDiv.innerHTML = `RIP <strong>${person.name}</strong><br>Died in <strong>${deathYear}</strong> on ${deathMonth}-${deathDay}.<br>Aged <strong>${ageAtDeath}</strong>.`;
+            return;
           }
         }
+        document.getElementById("result").innerHTML =
+          "No notable deaths on this date.";
       }
 
-      findAndDisplayPerson();
+      document.getElementById("prev").addEventListener("click", () => {
+        selectedDate.setDate(selectedDate.getDate() - 1);
+        updateDisplay();
+        updateDatePicker();
+      });
+
+      document.getElementById("next").addEventListener("click", () => {
+        selectedDate.setDate(selectedDate.getDate() + 1);
+        updateDisplay();
+        updateDatePicker();
+      });
+
+      document
+        .getElementById("datePicker")
+        .addEventListener("change", (event) => {
+          selectedDate = new Date(event.target.value);
+          updateDisplay();
+        });
+
+      function updateDatePicker() {
+        document.getElementById("datePicker").value = selectedDate
+          .toISOString()
+          .split("T")[0];
+      }
+
+      // Initialize display
+      updateDisplay();
+      updateDatePicker();
     </script>
   </body>
 </html>
