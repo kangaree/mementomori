@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RIP</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 50px;
+      }
+      .result {
+        font-size: 24px;
+        color: #333;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Memento Mori</h1>
+    <div class="result" id="result"></div>
+
+    <script>
+      const people = [
+        {
+          name: "Hank Williams",
+          birthday: "1923-09-17",
+          deathday: "1953-01-01",
+        },
+        {
+          name: "Guccio Gucci",
+          birthday: "1881-03-26",
+          deathday: "1953-01-02",
+        },
+        {
+          name: "T.S. Eliot",
+          birthday: "1888-09-26",
+          deathday: "1965-01-04",
+        },
+        {
+          name: "Albert Camus",
+          birthday: "1913-11-07",
+          deathday: "1960-01-04",
+        },
+        {
+          name: "Theodore Roosevelt",
+          birthday: "1858-10-27",
+          deathday: "1919-01-06",
+        },
+        {
+          name: "Nicolas Tesla",
+          birthday: "1856-07-10",
+          deathday: "1943-01-07",
+        },
+        {
+          name: "Nikola Tesla",
+          birthday: "1856-07-10",
+          deathday: "1943-01-07",
+        },
+        {
+          name: "Galileo Galilei",
+          birthday: "1564-02-15",
+          deathday: "1642-01-08",
+        },
+        {
+          name: "Amiri Baraka",
+          birthday: "1934-10-07",
+          deathday: "2014-01-09",
+        },
+        {
+          name: "Coco Chanel",
+          birthday: "1883-08-19",
+          deathday: "1971-01-10",
+        },
+        {
+          name: "David Bowie",
+          birthday: "1947-01-08",
+          deathday: "2016-01-10",
+        },
+        {
+          name: "Agatha Christie",
+          birthday: "1890-09-15",
+          deathday: "1976-01-12",
+        },
+        {
+          name: "Alan Rickman",
+          birthday: "1946-02-21",
+          deathday: "2016-01-14",
+        },
+        {
+          name: "Bobby Fischer",
+          birthday: "1943-03-09",
+          deathday: "2008-01-17",
+        },
+        {
+          name: "Patrice Lumumba",
+          birthday: "1925-07-02",
+          deathday: "1961-01-17",
+        },
+        {
+          name: "Cecil B. DeMille",
+          birthday: "1881-08-12",
+          deathday: "1959-01-17",
+        },
+        {
+          name: "Rudyard Kipling",
+          birthday: "1865-12-30",
+          deathday: "1936-01-18",
+        },
+        {
+          name: "Hedy Lamarr",
+          birthday: "1914-11-09",
+          deathday: "2000-01-19",
+        },
+        {
+          name: "Audrey Hepburn",
+          birthday: "1929-05-04",
+          deathday: "1993-01-20",
+        },
+        {
+          name: "Barbara Stanwyck",
+          birthday: "1907-07-16",
+          deathday: "1990-01-20",
+        },
+        {
+          name: "George Orwell",
+          birthday: "1903-06-25",
+          deathday: "1950-01-21",
+        },
+        {
+          name: "Winston Churchill",
+          birthday: "1874-11-30",
+          deathday: "1965-01-24",
+        },
+        {
+          name: "Thurgood Marshall",
+          birthday: "1908-07-02",
+          deathday: "1993-01-24",
+        },
+        {
+          name: "Adele Astaire",
+          birthday: "1897-09-10",
+          deathday: "1981-01-25",
+        },
+        {
+          name: "J.D. Salinger",
+          birthday: "1919-01-01",
+          deathday: "2010-01-27",
+        },
+        {
+          name: "W. B. Yeats",
+          birthday: "1865-06-13",
+          deathday: "1939-01-28",
+        },
+        {
+          name: "Zora Neale Hurston",
+          birthday: "1891-01-07",
+          deathday: "1960-01-28",
+        },
+        {
+          name: "Charlemagne",
+          birthday: "742-01-01",
+          deathday: "814-01-28",
+        },
+        {
+          name: "Robert Frost",
+          birthday: "1874-03-26",
+          deathday: "1963-01-29",
+        },
+        {
+          name: "Mahatma Gandhi",
+          birthday: "1869-10-02",
+          deathday: "1948-01-30",
+        },
+        {
+          name: "Mary Shelley",
+          birthday: "1797-08-30",
+          deathday: "1851-02-01",
+        },
+        {
+          name: "Buster Keaton",
+          birthday: "1895-10-04",
+          deathday: "1966-02-01",
+        },
+        {
+          name: "Philip Seymour Hoffman",
+          birthday: "1967-07-23",
+          deathday: "2014-02-02",
+        },
+        {
+          name: "Buddy Holly",
+          birthday: "1936-09-07",
+          deathday: "1959-02-03",
+        },
+        {
+          name: "Ritchie Valens",
+          birthday: "1941-05-13",
+          deathday: "1959-02-03",
+        },
+        {
+          name: "Gustav Klimt",
+          birthday: "1862-07-14",
+          deathday: "1918-02-06",
+        },
+        {
+          name: "Anna Nicole Smith",
+          birthday: "1967-11-28",
+          deathday: "2007-02-08",
+        },
+        {
+          name: "Joseph Lister",
+          birthday: "1827-04-05",
+          deathday: "1912-02-10",
+        },
+        {
+          name: "Whitney Houston",
+          birthday: "1963-08-09",
+          deathday: "2012-02-11",
+        },
+        {
+          name: "Sylvia Plath",
+          birthday: "1932-10-27",
+          deathday: "1963-02-11",
+        },
+        {
+          name: "Immanuel Kant",
+          birthday: "1724-04-22",
+          deathday: "1804-02-12",
+        },
+        {
+          name: "Richard Wagner",
+          birthday: "1813-05-22",
+          deathday: "1883-02-13",
+        },
+        {
+          name: "Antonin Scalia",
+          birthday: "1936-03-11",
+          deathday: "2016-02-13",
+        },
+        {
+          name: "Richard Feynman",
+          birthday: "1918-05-11",
+          deathday: "1988-02-15",
+        },
+        {
+          name: "Michelangelo",
+          birthday: "1475-03-06",
+          deathday: "1564-02-18",
+        },
+        {
+          name: "Harper Lee",
+          birthday: "1926-04-28",
+          deathday: "2016-02-19",
+        },
+        {
+          name: "Billy Graham",
+          birthday: "1918-11-07",
+          deathday: "2018-02-21",
+        },
+        {
+          name: "Malcolm X",
+          birthday: "1925-05-19",
+          deathday: "1965-02-21",
+        },
+        {
+          name: "Andy Warhol",
+          birthday: "1928-08-06",
+          deathday: "1987-02-22",
+        },
+        {
+          name: "John Keats",
+          birthday: "1795-10-31",
+          deathday: "1821-02-23",
+        },
+        {
+          name: "Stan Laurel",
+          birthday: "1890-06-16",
+          deathday: "1965-02-23",
+        },
+        {
+          name: "Mark Rothko",
+          birthday: "1903-09-25",
+          deathday: "1970-02-25",
+        },
+        {
+          name: "Henry James",
+          birthday: "1843-04-15",
+          deathday: "1916-02-28",
+        },
+        {
+          name: "Philip K. Dick",
+          birthday: "1928-12-16",
+          deathday: "1982-03-02",
+        },
+        {
+          name: "John Philip Sousa",
+          birthday: "1854-11-06",
+          deathday: "1932-03-06",
+        },
+        {
+          name: "Louisa May Alcott",
+          birthday: "1832-11-29",
+          deathday: "1888-03-06",
+        },
+        {
+          name: "Georgia O'Keeffe",
+          birthday: "1887-11-15",
+          deathday: "1986-03-06",
+        },
+        {
+          name: "Ayn Rand",
+          birthday: "1905-02-02",
+          deathday: "1982-03-06",
+        },
+        {
+          name: "Stanley Kubrick",
+          birthday: "1928-07-26",
+          deathday: "1999-03-07",
+        },
+        {
+          name: "Harriet Tubman",
+          birthday: "1822-02-01",
+          deathday: "1913-03-10",
+        },
+        {
+          name: "Anne Frank",
+          birthday: "1929-06-12",
+          deathday: "1945-03-12",
+        },
+        {
+          name: "Susan B. Anthony",
+          birthday: "1820-02-15",
+          deathday: "1906-03-13",
+        },
+        {
+          name: "Karl Marx",
+          birthday: "1818-05-05",
+          deathday: "1883-03-14",
+        },
+        {
+          name: "Stephen Hawking",
+          birthday: "1942-01-08",
+          deathday: "2018-03-14",
+        },
+        {
+          name: "Julius Caesar",
+          birthday: "100-07-12",
+          deathday: "44-03-15",
+        },
+        {
+          name: "Marcus Aurelius",
+          birthday: "121-04-26",
+          deathday: "180-03-17",
+        },
+        {
+          name: "D.H. Lawrence",
+          birthday: "1885-09-11",
+          deathday: "1930-03-19",
+        },
+        {
+          name: "Jules Verne",
+          birthday: "1828-02-08",
+          deathday: "1905-03-24",
+        },
+        {
+          name: "Elizabeth I",
+          birthday: "1533-09-07",
+          deathday: "1603-03-24",
+        },
+        {
+          name: "Claude Debussy",
+          birthday: "1862-08-22",
+          deathday: "1918-03-25",
+        },
+        {
+          name: "Raymond Chandler",
+          birthday: "1888-07-23",
+          deathday: "1959-03-26",
+        },
+        {
+          name: "Walt Whitman",
+          birthday: "1819-05-31",
+          deathday: "1892-03-26",
+        },
+        {
+          name: "Ludwig van Beethoven",
+          birthday: "1770-12-17",
+          deathday: "1827-03-26",
+        },
+        {
+          name: "Virginia Woolf",
+          birthday: "1882-01-25",
+          deathday: "1941-03-28",
+        },
+        {
+          name: "Isaac Newton",
+          birthday: "1642-01-04",
+          deathday: "1727-03-31",
+        },
+        {
+          name: "Max Ernst",
+          birthday: "1891-04-02",
+          deathday: "1976-04-01",
+        },
+        {
+          name: "Martin Luther King Jr.",
+          birthday: "1929-01-15",
+          deathday: "1968-04-04",
+        },
+        {
+          name: "Kurt Cobain",
+          birthday: "1967-02-20",
+          deathday: "1994-04-05",
+        },
+        {
+          name: "Igor Stravinsky",
+          birthday: "1882-06-17",
+          deathday: "1971-04-06",
+        },
+        {
+          name: "Isaac Asimov",
+          birthday: "1920-01-02",
+          deathday: "1992-04-06",
+        },
+        {
+          name: "Henry Ford",
+          birthday: "1863-07-30",
+          deathday: "1947-04-07",
+        },
+        {
+          name: "Pablo Picasso",
+          birthday: "1881-10-25",
+          deathday: "1973-04-08",
+        },
+        {
+          name: "Margaret Thatcher",
+          birthday: "1925-10-13",
+          deathday: "2013-04-08",
+        },
+        {
+          name: "Evelyn Waugh",
+          birthday: "1903-10-28",
+          deathday: "1966-04-10",
+        },
+        {
+          name: "Kurt Vonnegut",
+          birthday: "1922-11-11",
+          deathday: "2007-04-11",
+        },
+        {
+          name: "Confucius",
+          birthday: "551-09-28",
+          deathday: "479-04-11",
+        },
+        {
+          name: "Franklin D. Roosevelt",
+          birthday: "1882-01-30",
+          deathday: "1945-04-12",
+        },
+        {
+          name: "Simone de Beauvoir",
+          birthday: "1908-01-09",
+          deathday: "1986-04-14",
+        },
+        {
+          name: "Rachel Carson",
+          birthday: "1907-05-27",
+          deathday: "1964-04-14",
+        },
+        {
+          name: "Jean-Paul Sartre",
+          birthday: "1905-06-21",
+          deathday: "1980-04-15",
+        },
+        {
+          name: "Greta Garbo",
+          birthday: "1905-09-18",
+          deathday: "1990-04-15",
+        },
+        {
+          name: "Abraham Lincoln",
+          birthday: "1809-02-12",
+          deathday: "1865-04-15",
+        },
+        {
+          name: "Gabriel Garcia Marquez",
+          birthday: "1927-03-06",
+          deathday: "2014-04-17",
+        },
+        {
+          name: "Barbara Bush",
+          birthday: "1925-06-08",
+          deathday: "2018-04-17",
+        },
+        {
+          name: "Benjamin Franklin",
+          birthday: "1706-01-17",
+          deathday: "1790-04-17",
+        },
+        {
+          name: "Gabriel García Márquez",
+          birthday: "1927-03-06",
+          deathday: "2014-04-17",
+        },
+        {
+          name: "Albert Einstein",
+          birthday: "1879-03-14",
+          deathday: "1955-04-18",
+        },
+        {
+          name: "Charles Darwin",
+          birthday: "1809-02-12",
+          deathday: "1882-04-19",
+        },
+        {
+          name: "Mark Twain",
+          birthday: "1835-11-30",
+          deathday: "1910-04-21",
+        },
+        {
+          name: "Nina Simone",
+          birthday: "1933-02-21",
+          deathday: "2003-04-21",
+        },
+        {
+          name: "Prince",
+          birthday: "1958-06-07",
+          deathday: "2016-04-21",
+        },
+        {
+          name: "Richard Nixon",
+          birthday: "1913-01-09",
+          deathday: "1994-04-22",
+        },
+        {
+          name: "William Shakespeare",
+          birthday: "1564-04-23",
+          deathday: "1616-04-23",
+        },
+        {
+          name: "Boris Yeltsin",
+          birthday: "1931-02-01",
+          deathday: "2007-04-23",
+        },
+        {
+          name: "César Chávez",
+          birthday: "1927-03-31",
+          deathday: "1993-04-23",
+        },
+        {
+          name: "Cesar Chavez",
+          birthday: "1927-03-31",
+          deathday: "1993-04-23",
+        },
+        {
+          name: "Willa Cather",
+          birthday: "1873-12-07",
+          deathday: "1947-04-24",
+        },
+        {
+          name: "Lucille Ball",
+          birthday: "1911-08-06",
+          deathday: "1989-04-26",
+        },
+        {
+          name: "Ralph Waldo Emerson",
+          birthday: "1803-05-25",
+          deathday: "1882-04-27",
+        },
+        {
+          name: "Ferdinand Magellan",
+          birthday: "1480-1480-09-01",
+          deathday: "1521-04-27",
+        },
+        {
+          name: "Alfred Hitchcock",
+          birthday: "1899-08-13",
+          deathday: "1980-04-29",
+        },
+        {
+          name: "John Kenneth Galbraith",
+          birthday: "1908-10-15",
+          deathday: "2006-04-29",
+        },
+        {
+          name: "Sergio Leone",
+          birthday: "1929-01-03",
+          deathday: "1989-04-30",
+        },
+        {
+          name: "Leonardo da Vinci",
+          birthday: "1452-04-15",
+          deathday: "1519-05-02",
+        },
+        {
+          name: "Marlene Dietrich",
+          birthday: "1901-12-27",
+          deathday: "1992-05-06",
+        },
+        {
+          name: "Paul Gauguin",
+          birthday: "1848-06-07",
+          deathday: "1903-05-08",
+        },
+        {
+          name: "John Stuart Mill",
+          birthday: "1806-05-20",
+          deathday: "1873-05-08",
+        },
+        {
+          name: "Bob Marley",
+          birthday: "1945-02-06",
+          deathday: "1981-05-11",
+        },
+        {
+          name: "Doris Day",
+          birthday: "1922-04-03",
+          deathday: "2019-05-13",
+        },
+        {
+          name: "Gary Cooper",
+          birthday: "1901-05-07",
+          deathday: "1961-05-13",
+        },
+        {
+          name: "Frank Sinatra",
+          birthday: "1915-12-12",
+          deathday: "1998-05-14",
+        },
+        {
+          name: "Rita Hayworth",
+          birthday: "1918-10-17",
+          deathday: "1987-05-14",
+        },
+        {
+          name: "B.B. King",
+          birthday: "1925-09-16",
+          deathday: "2015-05-14",
+        },
+        {
+          name: "Emily Dickinson",
+          birthday: "1830-12-10",
+          deathday: "1886-05-15",
+        },
+        {
+          name: "Gilda Radner",
+          birthday: "1946-06-28",
+          deathday: "1989-05-20",
+        },
+        {
+          name: "Jane Addams",
+          birthday: "1860-09-06",
+          deathday: "1935-05-21",
+        },
+        {
+          name: "Langston Hughes",
+          birthday: "1902-02-01",
+          deathday: "1967-05-22",
+        },
+        {
+          name: "Philip Roth",
+          birthday: "1933-03-19",
+          deathday: "2018-05-22",
+        },
+        {
+          name: "John D. Rockefeller",
+          birthday: "1839-07-08",
+          deathday: "1937-05-23",
+        },
+        {
+          name: "Tina Turner",
+          birthday: "1939-11-26",
+          deathday: "2023-05-24",
+        },
+        {
+          name: "Duke Ellington",
+          birthday: "1899-04-29",
+          deathday: "1974-05-24",
+        },
+        {
+          name: "Maya Angelou",
+          birthday: "1928-04-04",
+          deathday: "2014-05-28",
+        },
+        {
+          name: "Boris Pasternak",
+          birthday: "1890-02-29",
+          deathday: "1960-05-30",
+        },
+        {
+          name: "Voltaire",
+          birthday: "1694-11-21",
+          deathday: "1778-05-30",
+        },
+        {
+          name: "Franz Kafka",
+          birthday: "1883-07-03",
+          deathday: "1924-06-03",
+        },
+        {
+          name: "Muhammad Ali",
+          birthday: "1942-01-17",
+          deathday: "2016-06-03",
+        },
+        {
+          name: "Ronald Reagan",
+          birthday: "1911-02-06",
+          deathday: "2004-06-05",
+        },
+        {
+          name: "Ray Bradbury",
+          birthday: "1920-08-22",
+          deathday: "2012-06-05",
+        },
+        {
+          name: "Alan Turing",
+          birthday: "1912-06-23",
+          deathday: "1954-06-07",
+        },
+        {
+          name: "Dorothy Parker",
+          birthday: "1893-08-22",
+          deathday: "1967-06-07",
+        },
+        {
+          name: "Jean Harlow",
+          birthday: "1911-02-08",
+          deathday: "1937-06-07",
+        },
+        {
+          name: "Thomas Paine",
+          birthday: "1737-01-29",
+          deathday: "1809-06-08",
+        },
+        {
+          name: "Anthony Bourdain",
+          birthday: "1956-06-25",
+          deathday: "2018-06-08",
+        },
+        {
+          name: "Charles Dickens",
+          birthday: "1812-02-07",
+          deathday: "1870-06-09",
+        },
+        {
+          name: "Ray Charles",
+          birthday: "1930-09-23",
+          deathday: "2004-06-10",
+        },
+        {
+          name: "Alexander the Great",
+          birthday: "356-07-20",
+          deathday: "323-06-10",
+        },
+        {
+          name: "John Wayne",
+          birthday: "1907-05-26",
+          deathday: "1979-06-11",
+        },
+        {
+          name: "Gregory Peck",
+          birthday: "1916-04-05",
+          deathday: "2003-06-12",
+        },
+        {
+          name: "Emmeline Pankhurst",
+          birthday: "1858-07-15",
+          deathday: "1928-06-14",
+        },
+        {
+          name: "Ella Fitzgerald",
+          birthday: "1917-04-25",
+          deathday: "1996-06-15",
+        },
+        {
+          name: "James K. Polk",
+          birthday: "1795-11-02",
+          deathday: "1849-06-15",
+        },
+        {
+          name: "Wernher von Braun",
+          birthday: "1912-03-23",
+          deathday: "1977-06-16",
+        },
+        {
+          name: "XXXTentacion",
+          birthday: "1998-01-23",
+          deathday: "2018-06-18",
+        },
+        {
+          name: "James Gandolfini",
+          birthday: "1961-09-18",
+          deathday: "2013-06-19",
+        },
+        {
+          name: "George Carlin",
+          birthday: "1937-05-12",
+          deathday: "2008-06-22",
+        },
+        {
+          name: "Michael Jackson",
+          birthday: "1958-08-29",
+          deathday: "2009-06-25",
+        },
+        {
+          name: "Nora Ephron",
+          birthday: "1941-05-19",
+          deathday: "2012-06-26",
+        },
+        {
+          name: "Harlan Ellison",
+          birthday: "1934-05-27",
+          deathday: "2018-06-28",
+        },
+        {
+          name: "Katherine Hepburn",
+          birthday: "1907-05-12",
+          deathday: "2003-06-29",
+        },
+        {
+          name: "Lana Turner",
+          birthday: "1921-02-08",
+          deathday: "1995-06-29",
+        },
+        {
+          name: "Marlon Brando",
+          birthday: "1924-04-03",
+          deathday: "2004-07-01",
+        },
+        {
+          name: "Amelia Earhart",
+          birthday: "1897-07-24",
+          deathday: "1937-07-02",
+        },
+        {
+          name: "Ernest Hemingway",
+          birthday: "1899-07-21",
+          deathday: "1961-07-02",
+        },
+        {
+          name: "James Stewart",
+          birthday: "1908-05-20",
+          deathday: "1997-07-02",
+        },
+        {
+          name: "Jean-Jacques Rousseau",
+          birthday: "1712-06-28",
+          deathday: "1778-07-02",
+        },
+        {
+          name: "Jim Morrison",
+          birthday: "1943-12-08",
+          deathday: "1971-07-03",
+        },
+        {
+          name: "Marie Curie",
+          birthday: "1867-11-07",
+          deathday: "1934-07-04",
+        },
+        {
+          name: "James Monroe",
+          birthday: "1758-04-28",
+          deathday: "1831-07-04",
+        },
+        {
+          name: "John Adams",
+          birthday: "1735-10-30",
+          deathday: "1826-07-04",
+        },
+        {
+          name: "Thomas Jefferson",
+          birthday: "1743-04-13",
+          deathday: "1826-07-04",
+        },
+        {
+          name: "William Faulkner",
+          birthday: "1897-09-25",
+          deathday: "1962-07-06",
+        },
+        {
+          name: "Louis Armstrong",
+          birthday: "1901-08-04",
+          deathday: "1971-07-06",
+        },
+        {
+          name: "Vivien Leigh",
+          birthday: "1913-11-05",
+          deathday: "1967-07-08",
+        },
+        {
+          name: "Edmund Burke",
+          birthday: "1729-01-12",
+          deathday: "1797-07-09",
+        },
+        {
+          name: "Alice Paul",
+          birthday: "1885-01-11",
+          deathday: "1977-07-09",
+        },
+        {
+          name: "Omar Sharif",
+          birthday: "1932-04-10",
+          deathday: "2015-07-10",
+        },
+        {
+          name: "Alexander Hamilton",
+          birthday: "1755-01-11",
+          deathday: "1804-07-12",
+        },
+        {
+          name: "Frida Kahlo",
+          birthday: "1907-07-06",
+          deathday: "1954-07-13",
+        },
+        {
+          name: "Cory Monteith",
+          birthday: "1982-05-11",
+          deathday: "2013-07-13",
+        },
+        {
+          name: "Anton Chekhov",
+          birthday: "1860-01-29",
+          deathday: "1904-07-15",
+        },
+        {
+          name: "James Whistler",
+          birthday: "1834-07-10",
+          deathday: "1903-07-17",
+        },
+        {
+          name: "Walter Cronkite",
+          birthday: "1916-11-04",
+          deathday: "2009-07-17",
+        },
+        {
+          name: "Billie Holiday",
+          birthday: "1915-04-07",
+          deathday: "1959-07-17",
+        },
+        {
+          name: "Chester Bennington",
+          birthday: "1976-03-20",
+          deathday: "2017-07-20",
+        },
+        {
+          name: "Bruce Lee",
+          birthday: "1940-11-27",
+          deathday: "1973-07-20",
+        },
+        {
+          name: "Amy Winehouse",
+          birthday: "1983-09-14",
+          deathday: "2011-07-23",
+        },
+        {
+          name: "Ulysses S. Grant",
+          birthday: "1822-04-27",
+          deathday: "1885-07-23",
+        },
+        {
+          name: "Peter Sellers",
+          birthday: "1925-09-08",
+          deathday: "1980-07-24",
+        },
+        {
+          name: "Bob Hope",
+          birthday: "1903-05-29",
+          deathday: "2003-07-27",
+        },
+        {
+          name: "Johann Sebastian Bach",
+          birthday: "1685-03-31",
+          deathday: "1750-07-28",
+        },
+        {
+          name: "Vincent van Gogh",
+          birthday: "1853-03-30",
+          deathday: "1890-07-29",
+        },
+        {
+          name: "David Niven",
+          birthday: "1910-03-01",
+          deathday: "1983-07-29",
+        },
+        {
+          name: "Ingmar Bergman",
+          birthday: "1918-07-14",
+          deathday: "2007-07-30",
+        },
+        {
+          name: "Raymond Carver",
+          birthday: "1938-05-25",
+          deathday: "1988-08-02",
+        },
+        {
+          name: "Joseph Conrad",
+          birthday: "1857-12-03",
+          deathday: "1924-08-03",
+        },
+        {
+          name: "Henri Cartier-Bresson",
+          birthday: "1908-08-22",
+          deathday: "2004-08-03",
+        },
+        {
+          name: "Marilyn Monroe",
+          birthday: "1926-06-01",
+          deathday: "1962-08-05",
+        },
+        {
+          name: "Toni Morrison",
+          birthday: "1931-02-18",
+          deathday: "2019-08-05",
+        },
+        {
+          name: "Friedrich Engels",
+          birthday: "1820-11-28",
+          deathday: "1895-08-05",
+        },
+        {
+          name: "Richard Burton",
+          birthday: "1925-11-10",
+          deathday: "1984-08-05",
+        },
+        {
+          name: "Oliver Hardy",
+          birthday: "1892-01-18",
+          deathday: "1957-08-07",
+        },
+        {
+          name: "Hermann Hesse",
+          birthday: "1877-07-02",
+          deathday: "1962-08-09",
+        },
+        {
+          name: "Herman Hesse",
+          birthday: "1877-07-02",
+          deathday: "1962-08-09",
+        },
+        {
+          name: "Cleopatra",
+          birthday: "69-01-01",
+          deathday: "30-08-10",
+        },
+        {
+          name: "Robin Williams",
+          birthday: "1951-07-21",
+          deathday: "2014-08-11",
+        },
+        {
+          name: "Jackson Pollock",
+          birthday: "1912-01-28",
+          deathday: "1956-08-11",
+        },
+        {
+          name: "Edith Wharton",
+          birthday: "1862-01-24",
+          deathday: "1937-08-11",
+        },
+        {
+          name: "Andrew Carnegie",
+          birthday: "1835-11-25",
+          deathday: "1919-08-11",
+        },
+        {
+          name: "Loretta Young",
+          birthday: "1913-01-06",
+          deathday: "2000-08-12",
+        },
+        {
+          name: "H.G. Wells",
+          birthday: "1866-09-21",
+          deathday: "1946-08-13",
+        },
+        {
+          name: "Ignaz Semmelweis",
+          birthday: "1818-07-01",
+          deathday: "1865-08-13",
+        },
+        {
+          name: "Bertolt Brecht",
+          birthday: "1898-02-10",
+          deathday: "1956-08-14",
+        },
+        {
+          name: "Elvis Presley",
+          birthday: "1935-01-08",
+          deathday: "1977-08-16",
+        },
+        {
+          name: "Peter Fonda",
+          birthday: "1939-02-23",
+          deathday: "2019-08-16",
+        },
+        {
+          name: "Aretha Franklin",
+          birthday: "1942-03-25",
+          deathday: "2018-08-16",
+        },
+        {
+          name: "Genghis Khan",
+          birthday: "1162-01-01",
+          deathday: "1227-08-18",
+        },
+        {
+          name: "Augustus",
+          birthday: "63-09-23",
+          deathday: "14-08-19",
+        },
+        {
+          name: "Richard III",
+          birthday: "1452-10-02",
+          deathday: "1485-08-22",
+        },
+        {
+          name: "Gregory Pincus",
+          birthday: "1903-04-09",
+          deathday: "1967-08-22",
+        },
+        {
+          name: "Diana Vreeland",
+          birthday: "1903-07-29",
+          deathday: "1989-08-22",
+        },
+        {
+          name: "Friedrich Nietzsche",
+          birthday: "1844-10-15",
+          deathday: "1900-08-25",
+        },
+        {
+          name: "David Hume",
+          birthday: "1711-05-07",
+          deathday: "1776-08-25",
+        },
+        {
+          name: "John McCain",
+          birthday: "1936-08-29",
+          deathday: "2018-08-25",
+        },
+        {
+          name: "Stevie Ray Vaughan",
+          birthday: "1954-10-03",
+          deathday: "1990-08-27",
+        },
+        {
+          name: "John Huston",
+          birthday: "1906-08-05",
+          deathday: "1987-08-28",
+        },
+        {
+          name: "Chadwick Boseman",
+          birthday: "1976-11-29",
+          deathday: "2020-08-28",
+        },
+        {
+          name: "Princess Diana",
+          birthday: "1961-07-01",
+          deathday: "1997-08-31",
+        },
+        {
+          name: "Barbara McClintock",
+          birthday: "1902-06-16",
+          deathday: "1992-09-02",
+        },
+        {
+          name: "J.R.R. Tolkien",
+          birthday: "1892-01-03",
+          deathday: "1973-09-02",
+        },
+        {
+          name: "Albert Schweitzer",
+          birthday: "1875-01-14",
+          deathday: "1965-09-04",
+        },
+        {
+          name: "Joan Rivers",
+          birthday: "1933-06-08",
+          deathday: "2014-09-04",
+        },
+        {
+          name: "Steve Irwin",
+          birthday: "1962-02-22",
+          deathday: "2006-09-04",
+        },
+        {
+          name: "Mother Teresa",
+          birthday: "1910-08-26",
+          deathday: "1997-09-05",
+        },
+        {
+          name: "Burt Reynolds",
+          birthday: "1936-02-11",
+          deathday: "2018-09-06",
+        },
+        {
+          name: "Mac Miller",
+          birthday: "1992-01-19",
+          deathday: "2018-09-07",
+        },
+        {
+          name: "Queen Elizabeth II",
+          birthday: "1926-04-21",
+          deathday: "2022-09-08",
+        },
+        {
+          name: "William the Conqueror",
+          birthday: "1028-01-01",
+          deathday: "1087-09-09",
+        },
+        {
+          name: "Mary Wollstonecraft",
+          birthday: "1759-04-27",
+          deathday: "1797-09-10",
+        },
+        {
+          name: "Nikita Khrushchev",
+          birthday: "1894-04-15",
+          deathday: "1971-09-11",
+        },
+        {
+          name: "David Foster Wallace",
+          birthday: "1962-02-21",
+          deathday: "2008-09-12",
+        },
+        {
+          name: "Edward Albee",
+          birthday: "1928-03-12",
+          deathday: "2016-09-16",
+        },
+        {
+          name: "William Golding",
+          birthday: "1911-09-19",
+          deathday: "1993-09-17",
+        },
+        {
+          name: "Ruth Bader Ginsburg",
+          birthday: "1933-03-15",
+          deathday: "2020-09-18",
+        },
+        {
+          name: "Jimi Hendrix",
+          birthday: "1942-11-27",
+          deathday: "1970-09-18",
+        },
+        {
+          name: "Sigmund Freud",
+          birthday: "1856-05-06",
+          deathday: "1939-09-23",
+        },
+        {
+          name: "Pablo Neruda",
+          birthday: "1904-07-12",
+          deathday: "1973-09-23",
+        },
+        {
+          name: "Louis Pasteur",
+          birthday: "1822-12-27",
+          deathday: "1895-09-28",
+        },
+        {
+          name: "Herman Melville",
+          birthday: "1819-08-01",
+          deathday: "1891-09-28",
+        },
+        {
+          name: "James Dean",
+          birthday: "1931-02-08",
+          deathday: "1955-09-30",
+        },
+        {
+          name: "Marcel Duchamp",
+          birthday: "1887-07-28",
+          deathday: "1968-10-02",
+        },
+        {
+          name: "Janis Joplin",
+          birthday: "1943-01-19",
+          deathday: "1970-10-04",
+        },
+        {
+          name: "Anne Sexton",
+          birthday: "1928-01-09",
+          deathday: "1974-10-04",
+        },
+        {
+          name: "Steve Jobs",
+          birthday: "1955-02-24",
+          deathday: "2011-10-05",
+        },
+        {
+          name: "Bette Davis",
+          birthday: "1908-04-05",
+          deathday: "1989-10-06",
+        },
+        {
+          name: "Eddie Van Halen",
+          birthday: "1955-01-26",
+          deathday: "2020-10-06",
+        },
+        {
+          name: "Orson Welles",
+          birthday: "1915-05-06",
+          deathday: "1985-10-10",
+        },
+        {
+          name: "Chico Marx",
+          birthday: "1887-03-22",
+          deathday: "1961-10-11",
+        },
+        {
+          name: "Angela Lansbury",
+          birthday: "1925-10-16",
+          deathday: "2022-10-11",
+        },
+        {
+          name: "Robert E. Lee",
+          birthday: "1807-01-19",
+          deathday: "1870-10-12",
+        },
+        {
+          name: "Frederic Chopin",
+          birthday: "1810-03-01",
+          deathday: "1849-10-17",
+        },
+        {
+          name: "Thomas Edison",
+          birthday: "1847-02-11",
+          deathday: "1931-10-18",
+        },
+        {
+          name: "Charles Babbage",
+          birthday: "1791-12-26",
+          deathday: "1871-10-18",
+        },
+        {
+          name: "Jack Kerouac",
+          birthday: "1922-03-12",
+          deathday: "1969-10-21",
+        },
+        {
+          name: "Paul Cézanne",
+          birthday: "1839-01-19",
+          deathday: "1906-10-22",
+        },
+        {
+          name: "Yokozuna",
+          birthday: "1966-10-02",
+          deathday: "200-10-23",
+        },
+        {
+          name: "Jackie Robinson",
+          birthday: "1919-01-31",
+          deathday: "1972-10-24",
+        },
+        {
+          name: "Rosa Parks",
+          birthday: "1913-02-04",
+          deathday: "2005-10-24",
+        },
+        {
+          name: "Elizabeth Cady Stanton",
+          birthday: "1815-11-12",
+          deathday: "1902-10-26",
+        },
+        {
+          name: "John Locke",
+          birthday: "1632-08-29",
+          deathday: "1704-10-28",
+        },
+        {
+          name: "Indira Gandhi",
+          birthday: "1917-11-19",
+          deathday: "1984-10-31",
+        },
+        {
+          name: "Henri Matisse",
+          birthday: "1869-12-31",
+          deathday: "1954-11-03",
+        },
+        {
+          name: "James Clerk Maxwell",
+          birthday: "1831-06-13",
+          deathday: "1879-11-05",
+        },
+        {
+          name: "Eleanor Roosevelt",
+          birthday: "1884-10-11",
+          deathday: "1962-11-07",
+        },
+        {
+          name: "Dylan Thomas",
+          birthday: "1914-10-27",
+          deathday: "1953-11-09",
+        },
+        {
+          name: "Margaret Mead",
+          birthday: "1901-12-16",
+          deathday: "1978-11-15",
+        },
+        {
+          name: "Lil Peep",
+          birthday: "1996-11-01",
+          deathday: "2017-11-15",
+        },
+        {
+          name: "Catherine the Great",
+          birthday: "1729-05-02",
+          deathday: "1796-11-17",
+        },
+        {
+          name: "Doris Lessing",
+          birthday: "1919-10-22",
+          deathday: "2013-11-17",
+        },
+        {
+          name: "Marcel Proust",
+          birthday: "1871-07-10",
+          deathday: "1922-11-18",
+        },
+        {
+          name: "Niels Bohr",
+          birthday: "1885-10-07",
+          deathday: "1962-11-18",
+        },
+        {
+          name: "John F. Kennedy",
+          birthday: "1917-05-29",
+          deathday: "1963-11-22",
+        },
+        {
+          name: "C.S. Lewis",
+          birthday: "1898-11-29",
+          deathday: "1963-11-22",
+        },
+        {
+          name: "Aldous Huxley",
+          birthday: "1894-07-26",
+          deathday: "1963-11-22",
+        },
+        {
+          name: "Walter Reed",
+          birthday: "1851-09-13",
+          deathday: "1902-11-23",
+        },
+        {
+          name: "Freddie Mercury",
+          birthday: "1946-09-05",
+          deathday: "1991-11-24",
+        },
+        {
+          name: "Sojourner Truth",
+          birthday: "1797-11-20",
+          deathday: "1883-11-26",
+        },
+        {
+          name: "Harvey Milk",
+          birthday: "1930-05-22",
+          deathday: "1978-11-27",
+        },
+        {
+          name: "Ada Lovelace",
+          birthday: "1815-12-10",
+          deathday: "1852-11-27",
+        },
+        {
+          name: "Richard Wright",
+          birthday: "1908-09-04",
+          deathday: "1960-11-28",
+        },
+        {
+          name: "Cary Grant",
+          birthday: "1904-01-18",
+          deathday: "1986-11-29",
+        },
+        {
+          name: "Oscar Wilde",
+          birthday: "1854-10-16",
+          deathday: "1900-11-30",
+        },
+        {
+          name: "George H.W. Bush",
+          birthday: "1924-06-12",
+          deathday: "2018-11-30",
+        },
+        {
+          name: "James Baldwin",
+          birthday: "1924-08-02",
+          deathday: "1987-12-01",
+        },
+        {
+          name: "Gwendolyn Brooks",
+          birthday: "1917-06-07",
+          deathday: "2000-12-03",
+        },
+        {
+          name: "Hannah Arendt",
+          birthday: "1906-10-14",
+          deathday: "1975-12-04",
+        },
+        {
+          name: "Nelson Mandela",
+          birthday: "1918-07-18",
+          deathday: "2013-12-05",
+        },
+        {
+          name: "Wolfgang Amadeus Mozart",
+          birthday: "1756-01-27",
+          deathday: "1791-12-05",
+        },
+        {
+          name: "John Lennon",
+          birthday: "1940-10-09",
+          deathday: "1980-12-08",
+        },
+        {
+          name: "Golda Meir",
+          birthday: "1898-05-03",
+          deathday: "1978-12-08",
+        },
+        {
+          name: "Juice WRLD",
+          birthday: "1998-12-02",
+          deathday: "2019-12-08",
+        },
+        {
+          name: "Richard Pryor",
+          birthday: "1940-12-01",
+          deathday: "2005-12-10",
+        },
+        {
+          name: "Otis Redding",
+          birthday: "1941-09-09",
+          deathday: "1967-12-10",
+        },
+        {
+          name: "Anne Rice",
+          birthday: "1941-10-04",
+          deathday: "2021-12-11",
+        },
+        {
+          name: "Sam Cooke",
+          birthday: "1931-01-22",
+          deathday: "1964-12-11",
+        },
+        {
+          name: "Joseph Heller",
+          birthday: "1923-05-01",
+          deathday: "1999-12-12",
+        },
+        {
+          name: "Ella Baker",
+          birthday: "1903-12-13",
+          deathday: "1986-12-13",
+        },
+        {
+          name: "George Washington",
+          birthday: "1732-02-22",
+          deathday: "1799-12-14",
+        },
+        {
+          name: "Peter O'Toole",
+          birthday: "1932-08-02",
+          deathday: "2015-12-14",
+        },
+        {
+          name: "Walt Disney",
+          birthday: "1901-12-05",
+          deathday: "1966-12-15",
+        },
+        {
+          name: "Christopher Hitchens",
+          birthday: "1949-04-13",
+          deathday: "2011-12-15",
+        },
+        {
+          name: "Simón Bolívar",
+          birthday: "1783-07-24",
+          deathday: "1830-12-17",
+        },
+        {
+          name: "John Steinbeck",
+          birthday: "1902-02-27",
+          deathday: "1968-12-20",
+        },
+        {
+          name: "Carl Sagan",
+          birthday: "1934-11-09",
+          deathday: "1996-12-20",
+        },
+        {
+          name: "F. Scott Fitzgerald",
+          birthday: "1896-09-24",
+          deathday: "1940-12-21",
+        },
+        {
+          name: "John Muir",
+          birthday: "1838-04-21",
+          deathday: "1914-12-24",
+        },
+        {
+          name: "James Brown",
+          birthday: "1933-05-03",
+          deathday: "2006-12-25",
+        },
+        {
+          name: "Charlie Chaplin",
+          birthday: "1889-04-16",
+          deathday: "1977-12-25",
+        },
+        {
+          name: "Carrie Fisher",
+          birthday: "1956-10-21",
+          deathday: "2016-12-27",
+        },
+        {
+          name: "Benazir Bhutto",
+          birthday: "1953-06-21",
+          deathday: "2007-12-27",
+        },
+        {
+          name: "Rainer Maria Rilke",
+          birthday: "1875-12-04",
+          deathday: "1926-12-29",
+        },
+        {
+          name: "Thomas Becket",
+          birthday: "1119-01-01",
+          deathday: "1170-12-29",
+        },
+        {
+          name: "Barbara Walters",
+          birthday: "1929-09-25",
+          deathday: "2023-12-30",
+        },
+      ];
+
+      function findAndDisplayPerson() {
+        const today = new Date();
+        const month = today.getMonth() + 1;
+        const day = today.getDate();
+        const currentDate = `${month}-${day}`;
+
+        for (const person of people) {
+          const deathDateParts = person.deathday.split("-");
+          const deathMonth = deathDateParts[1];
+          const deathDay = deathDateParts[2];
+
+          if (
+            deathMonth === String(month).padStart(2, "0") &&
+            deathDay === String(day).padStart(2, "0")
+          ) {
+            const birthYear = new Date(person.birthday).getFullYear();
+            const deathYear = new Date(person.deathday).getFullYear();
+            const ageAtDeath = deathYear - birthYear;
+
+            const resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = `RIP ${person.name}<br>Died in ${deathYear} on ${deathMonth}-${deathDay}.<br>Aged ${ageAtDeath}.`;
+            break;
+          }
+        }
+      }
+
+      findAndDisplayPerson();
+    </script>
+  </body>
+</html>
